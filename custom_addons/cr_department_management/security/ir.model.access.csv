@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cr_department_student,student_student.user,model_student_student,,1,1,1,1
+access_cr_department_employee,employee_employee.user,model_employee_employee,,1,1,1,1
+access_cr_department_department,department_department.user,model_department_department,,1,1,1,1

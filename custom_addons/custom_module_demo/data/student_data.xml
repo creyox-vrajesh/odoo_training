@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    
+    <record id="student_rahul" model="school.student">
+        <field name="name">Rahul</field>
+        <field name="age">20</field>
+        <field name="email">rahul@gmail.com</field>
+    </record>
+
+    <record id="student_amit" model="school.student">
+        <field name="name">Amit</field>
+        <field name="age">21</field>
+        <field name="email">amit@gmail.com</field>
+    </record>
+
+    <record id="student_priya" model="school.student">
+        <field name="name">Priya</field>
+        <field name="age">19</field>
+        <field name="email">priya@gmail.com</field>
+    </record>
+</odoo>

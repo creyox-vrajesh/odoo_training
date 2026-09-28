@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List view (removed student_ids from here) -->
+    <record id="school_teacher_view_list" model="ir.ui.view">
+        <field name="name">school.teachers.list</field>
+        <field name="model">school.teachers</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="subject" />
+                <field name="department" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view (student_ids belongs here inside the notebook/sheet) -->
+    <record id="school_teacher_view_form" model="ir.ui.view">
+        <field name="name">school.teachers.form</field>
+        <field name="model">school.teachers</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="subject" />
+                        <field name="department" />
+                    </group>
+                    <notebook>
+                        <page string="Students">
+                            <field name="student_ids">
+                                <list editable="bottom">
+                                    <field name="name" />
+                                    <field name="age" />
+                                    <field name="email" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="school_teacher_action" model="ir.actions.act_window">
+        <field name="name">Teachers</field>
+        <field name="res_model">school.teachers</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem
+        id="school_teacher_menu"
+        name="Teachers"
+        parent="school_student_root"
+        action="school_teacher_action"
+    />
+
+</odoo>

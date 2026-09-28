@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- list view -->
+    <record id='student_student_view_list' model='ir.ui.view'>
+        <field name='name'>student.student.list</field>
+        <field name='model'>student.student</field>
+        <field name='arch' type='xml'>
+            <list>
+                <field name='name' />
+                <field name='image' />
+                <field name='street' />
+                <field name='city' />
+                <field name='zip' />
+                <field name='state_id' />
+                <field name='country_id' />
+                <field name='birthdate' />
+                <field name='age' />
+                <field name='mobile' />
+                <field name='email' />
+                <field name='barcode' />
+                <field name='department_id' />
+                <field name='type' />
+                <field name='notes' />
+                <field name='remarks' />
+                <field name='is_cr' />
+                <field name='cr_start_date' />
+                <field name='cr_end_date' />
+                <field name='no_of_votes' />
+                <field name='active' />
+            </list>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id='student_student_view_form' model='ir.ui.view'>
+        <field name='name'>student.student.form</field>
+        <field name='model'>student.student</field>
+        <field name='arch' type='xml'>
+            <form string="Students">
+
+                <sheet>
+                    <div class='oe_avatar' style='float:right;'>
+                        <field name='image' widget='image' class='oe_avatar' />
+                    </div>
+                    <div class="oe_title">
+                        <field name='name' />
+                    </div>
+
+                    <group>
+                        <!-- column 1 -->
+                        <group string='Personal Information'>
+                            <field name='birthdate' />
+                            <field name='age' />
+                            <field name='mobile' widget="phone" />
+                            <field name='email' widget="email" />
+                            <field name='barcode' />
+                            <field name='active' widget="boolean_toggle" />
+                        </group>
+
+                        <!-- column 2 -->
+                        <group string='Academic Information'>
+                            <field name='department_id' />
+                            <field name='type' />
+                        </group>
+
+                        <!-- notebook -->
+                        <notebook>
+                            <page string="Address &amp; Notes">
+                                <group>
+                                    <group string="Address">
+                                        <field name='street' />
+                                        <field name='city' />
+                                        <field name='state_id' />
+                                        <field name='zip' />
+                                        <field name='country_id' />
+                                    </group>
+
+                                    <group string="Class Representative Details">
+                                        <field name='is_cr' />
+                                        <field name='cr_start_date' />
+                                        <field name='cr_end_date' />
+                                        <field name='no_of_votes' />
+                                    </group>
+
+                                    <group string="Internal Remarks">
+                                        <field name='notes' placeholder="Internal notes : " />
+                                        <field name='remarks' placeholder="Remarks : " />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- kanban view -->
+    <record id='student_student_view_kanban' model='ir.ui.view'>
+        <field name="name">student.student.kanban</field>
+        <field name="model">student.student</field>
+        <field name='arch' type='xml'>
+            <kanban>
+                <field name="id" />
+                <field name="name" />
+                <field name="email" />
+                <field name="mobile" />
+                <field name="department_id" />
+                <field name="image" />
+
+                <templates>
+                    <t t-name='card'>
+                        <div class="d-flex align-items-start gap-3 w-100">
+                            <!-- Left: Profile Avatar Image -->
+                            <div class="flex-shrink-0">
+                                <field name="image" widget="image"
+                                    options="{'preview_image': 'image', 'size': [60, 80]}"
+                                    class="rounded bg-view" />
+                            </div>
+                            <!-- Right: Contact/Academic Information Data Card -->
+                            <div class="flex-grow-1 min-w-0 d-flex flex-column gap-1">
+                                <div class="fw-bold text-truncate text-900 fs-5 mb-1">
+                                    <field name="name" />
+                                </div>
+                                <div class="text-muted small text-truncate">
+                                    <i class="fa fa-envelope me-1" />
+                                    <field name="email" />
+                                </div>
+                                <div class="text-muted small text-truncate">
+                                    <i class="fa fa-phone me-1" />
+                                    <field name="mobile" />
+                                </div>
+                                <div class="mt-1">
+                                    <span class="badge bg-secondary rounded-pill">
+                                        <field name="department_id" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- activity view -->
+    <record id="student_student_view_activity" model="ir.ui.view">
+        <field name="name">student.student.activity</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <activity string='Student Activites'>
+                <field name='name'/>
+                <templates>
+                    <div t-name='activity-box'>
+                        <div>                            
+                            <field name="name" display='full'/>
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
+    
+        <!-- search view -->
+    <record id='student_student_view_search' model='ir.ui.view'>
+        <field name='name'>student.student.search</field>
+        <field name='model'>student.student</field>
+        <field name='arch' type='xml'>
+            <search string="Search Students">
+                <!-- Searchable Fields -->
+                <field name='name'/>
+                <field name='email'/>
+                <field name='department_id'/>
+                <field name='street'/>
+                <field name='city'/>
+                <field name='zip'/>
+                <field name='state_id'/>
+                <field name='country_id'/>
+                <field name='birthdate'/>
+                <field name='mobile'/>
+                <field name='email'/>
+                <field name='barcode'/>
+                <field name='type'/>
+                <field name='notes'/>
+                <field name='remarks'/>
+                <field name='is_cr'/>
+                <field name='cr_start_date'/>
+                <field name='cr_end_date'/>
+                <field name='no_of_votes'/>
+                <field name='active'/>
+
+                <!-- Custom Filters Group -->
+                <filter string="Created Today" name="cr_start_date" domain="[('cr_start_date', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                
+                <separator/>
+                
+                <filter string="Active Students" name="active_students" domain="[('active', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- actions -->
+    <record id='student_student_action' model='ir.actions.act_window'>
+        <field name='name'>Students</field>
+        <field name='res_model'>student.student</field>
+        <field name='view_mode'>list,form,kanban,activity</field>
+    </record>
+
+    <!-- menu -->
+
+    <menuitem
+        id='student_student_menu'
+        parent='department_management_menu_root'
+        name='Students'
+        action='student_student_action'
+    />
+</odoo>

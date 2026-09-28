@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- list view -->
+    <record id='department_department_view_list' model='ir.ui.view'>
+        <field name='name'>department.department.list</field>
+        <field name='model'>department.department</field>
+        <field name='arch' type='xml'>
+            <list>
+                <field name='name' />
+                <field name='code' />
+                <field name='no_of_students' />
+                <field name='staff_ids' />
+                <field name='hod_id' />
+                <field name='student_ids' />
+                <field name='notes' />
+                <field name='active' />
+            </list>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id='department_department_view_form' model='ir.ui.view'>
+        <field name='name'>department.department.form</field>
+        <field name='model'>department.department</field>
+        <field name='arch' type='xml'>
+            <form string="Department">
+                <sheet>
+                    <field name='name' placeholder="e.g. Computer Science Department" />
+
+                    <group>
+                        <group>
+                            <field name='code' placeholder="e.g. CSD" />
+                            <field name='hod_id' placeholder="Select Head of Department" />
+                            <field name='no_of_students' readonly="1" />
+                            <field name='active' widget="boolean_toggle" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Staff Members">
+                            <field name='staff_ids'>
+                                <list>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Students">
+                            <field name='student_ids'>
+                                <list>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name='notes' placeholder="Add internal department details : "/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- graph view -->
+    <record id="department_department_view_graph" model="ir.ui.view">
+        <field name="name">department.department.graph</field>
+        <field name="model">department.department</field>
+        <field name="arch" type="xml">
+            <graph string="Students per Department" type="bar">
+                <!-- x-Axis department name -->
+                <field name="name" type="row"/>
+                
+                <!-- y-Axis  measurement metric -->
+                <field name="no_of_students" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- pivot view -->
+    <record id="department_department_view_pivot" model="ir.ui.view">
+        <field name="name">department.department.pivot</field>
+        <field name="model">department.department</field>
+        <field name="arch" type="xml">
+            <pivot string="Department Analysis" sample="1">
+                <field name="name" type="row"/>
+                <field name="no_of_students" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- action -->
+    <record id='department_department_action' model='ir.actions.act_window'>
+        <field name='name'>Departments</field>
+        <field name='res_model'>department.department</field>
+        <field name='view_mode'>list,form,graph,pivot</field>
+    </record>
+
+    <!-- menu -->
+    <menuitem
+        id='department_department_menu'
+        parent='department_management_menu_root'
+        name='Departments'
+        action='department_department_action'
+    />
+</odoo>
