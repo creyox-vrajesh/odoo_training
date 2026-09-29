@@ -19,7 +19,7 @@ class Employee(models.Model):
     age = fields.Float(
         string='Age',
         compute='_compute_age', 
-        store=False
+        store=True
     )
 
     mobile = fields.Char(string='Mobile')
@@ -39,14 +39,15 @@ class Employee(models.Model):
     @api.depends('birthdate')
     def _compute_age(self):
         today= date.today()
-        print("demo",self)
-        print("demo",today)
 
         for record in self:
-            print("demo",record)
         
             if record.birthdate:
                 birth = record.birthdate
                 record.age = today.year - birth.year - ((today.month,today.day) < (birth.month,birth.day))
             else:
                 record.age = 0
+
+    @api.onchange('mobile')
+    def _onchange_mobile(self):
+        self.barcode = self.mobile

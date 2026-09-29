@@ -1,6 +1,5 @@
 .idea/
-.venv/
 .vscode/
-
-odoo/
+.venv/
 odoo_19_env/
+odoo/

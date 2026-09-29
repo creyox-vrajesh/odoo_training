@@ -162,7 +162,6 @@
         parent='department_management_menu_root'
         name='Employees'
         action='employee_employee_action'
-
     />
 
 </odoo>

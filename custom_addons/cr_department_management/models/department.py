@@ -20,8 +20,16 @@ class Department(models.Model):
         string="Staff IDs" 
     )
 
-    hod_id = fields.Many2one('employee.employee', string='HOD ID: ')
-    student_ids = fields.One2many('student.student', 'department_id', string='Student IDs: ')
+    hod_id = fields.Many2one('employee.employee', string='HOD ID: ',
+    domain=[('is_hod','=',True)]
+    )
+
+    student_ids = fields.One2many(
+        'student.student', 
+        'department_id', 
+        string='Students',
+        domain=[('type','=','internal')]
+    )
     
     notes = fields.Html(string='Notes',sanitize=True)
     active = fields.Boolean(string='Is Active',default=True)
@@ -39,4 +47,4 @@ class Department(models.Model):
                 'student.student'
             ].search_count(domain)
 
-    print("num of students are : ",no_of_students)
+    # print("num of students are : ",no_of_students)
