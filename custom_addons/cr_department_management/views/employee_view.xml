@@ -7,20 +7,12 @@
         <field name='arch' type='xml'>
             <list>
                 <field name='name' />
-                <field name='image' />
-                <field name='street' />
-                <field name='city' />
-                <field name='zip' />
-                <field name='state_id' />
-                <field name='country_id' />
-                <field name='birthdate' />
+                <field name='department_ids' widget="many2many_tags"/>
                 <field name='age' />
                 <field name='mobile' />
                 <field name='email' />
                 <field name='barcode' />
                 <field name='job_time' />
-                <field name='notes' />
-                <field name='remarks' />
                 <field name='is_hod' />
                 <field name='active' />
             </list>
@@ -35,11 +27,11 @@
             <form string="Employee">
                 <sheet>
                     <field name='image' widget='image' class='oe_avatar' />
-
+                    
                     <div class="oe_title">
                         <field name='name' placeholder="Employee Full Name" required="1" />
                     </div>
-
+                    
                     <group>
                         <!-- Column 1  -->
                         <group string='Contact &amp; Personal Info'>
@@ -48,10 +40,11 @@
                             <field name='birthdate' />
                             <field name='age' />
                         </group>
-
+                        
                         <!-- Column 2  -->
-
+                        
                         <group string='HR Information'>
+                            <field name='department_ids' widget="many2many_tags"/>
                             <field name='job_time' />
                             <field name='barcode' />
                             <field name='is_hod' widget="boolean_toggle" />

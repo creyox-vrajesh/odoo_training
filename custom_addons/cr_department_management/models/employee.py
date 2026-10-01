@@ -7,13 +7,23 @@ class Employee(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Employee Name')
+    
+    
+    department_ids = fields.Many2many(
+        'department.department',
+        'department_employee_rel',  
+        # 'employee_id',              
+        # 'department_id',            
+        string="Departments"
+    )
+
     image = fields.Binary(string='Upload Image', attachment=True)
     street = fields.Char(string="Street")
     city = fields.Char(string="City")
     zip = fields.Char(string="Zip Code")
  
-    state_id = fields.Many2one('res.country.state',string='State ID')
-    country_id = fields.Many2one('res.country',string='Country ID')
+    state_id = fields.Many2one('res.country.state',string='State')
+    country_id = fields.Many2one('res.country',string='Country')
 	
     birthdate = fields.Date(string='Birthdate')
     age = fields.Float(

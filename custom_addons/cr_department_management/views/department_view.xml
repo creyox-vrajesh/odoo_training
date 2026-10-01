@@ -6,13 +6,14 @@
         <field name='model'>department.department</field>
         <field name='arch' type='xml'>
             <list>
-                <field name='name' />
+                <field name='name' string="Department"/>
                 <field name='code' />
-                <field name='no_of_students' />
-                <field name='staff_ids' />
-                <field name='hod_id' />
-                <field name='student_ids' />
-                <field name='notes' />
+                <field name='student_capacity' string="Capacity"/>
+                <field name='no_of_employees' string="Employees"/>
+                <field name='no_of_students' string="Internal"/>
+                <field name='no_of_external_students' string="External"/>
+                <field name='is_full' />
+                <field name='hod_id' string="HOD"/>
                 <field name='active' />
             </list>
         </field>
@@ -31,7 +32,11 @@
                         <group>
                             <field name='code' placeholder="e.g. CSD" />
                             <field name='hod_id' placeholder="Select Head of Department" />
-                            <field name='no_of_students' readonly="1" />
+                            <field name='student_capacity' />
+                            <field name='no_of_employees'  />
+                            <field name='no_of_students'  />
+                            <field name='no_of_external_students'  />
+                            <field name='is_full'/>
                             <field name='active' widget="boolean_toggle" />
                         </group>
                     </group>

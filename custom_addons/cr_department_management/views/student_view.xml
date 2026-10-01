@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- list view -->
+
+    <button name="action_filtered_students"
+        string="CE students only"
+        type="object" />
+
+
     <record id='student_student_view_list' model='ir.ui.view'>
         <field name='name'>student.student.list</field>
         <field name='model'>student.student</field>
         <field name='arch' type='xml'>
-            <list>
+            <list>                
                 <field name='name' />
                 <field name='image' />
-                <field name='street' />
-                <field name='city' />
-                <field name='zip' />
-                <field name='state_id' />
-                <field name='country_id' />
-                <field name='birthdate' />
+                <field name='admission_no' />
                 <field name='age' />
                 <field name='mobile' />
                 <field name='email' />
-                <field name='barcode' />
                 <field name='department_id' />
                 <field name='type' />
-                <field name='notes' />
-                <field name='remarks' />
                 <field name='is_cr' />
-                <field name='cr_start_date' />
-                <field name='cr_end_date' />
                 <field name='no_of_votes' />
                 <field name='active' />
+
+                <button name="action_filtered_students"
+                        string="CE students only"
+                        type="object" />
             </list>
         </field>
     </record>
@@ -38,6 +38,10 @@
         <field name='arch' type='xml'>
             <form string="Students">
                 <header>
+
+                    <button name="action_filtered_students"
+                        string="CE students only"
+                        type="object" />
 
                     <button name="search_student"
                         string="search me !!"
@@ -61,8 +65,8 @@
 
                     <button name="unlink_student"
                         string="unlink student!!"
-                        type="object" 
-                        confirm="Are you sure you want to delete this student?"/>
+                        type="object"
+                        confirm="Are you sure you want to delete this student?" />
                 </header>
 
                 <sheet>
@@ -78,6 +82,7 @@
                         <group string='Personal Information'>
                             <field name='birthdate' />
                             <field name='age' />
+                            <field name='admission_no' />
                             <field name='mobile' widget="phone" />
                             <field name='email' widget="email" />
                             <field name='barcode' />
@@ -204,6 +209,7 @@
                 <!-- Searchable Fields -->
                 <field name='name' />
                 <field name='email' />
+                <field name='admission_no' />
                 <field name='department_id' />
                 <field name='street' />
                 <field name='city' />
@@ -222,7 +228,7 @@
                 <field name='active' />
 
                 <!-- Custom Filters Group -->
-                <filter name='group by' />
+                <!-- <filter name='group by' /> -->
 
                 <filter string="Active Students" name="active_students"
                     domain="[('active', '=', True)]" />
