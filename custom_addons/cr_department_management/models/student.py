@@ -33,6 +33,11 @@ class Student(models.Model):
             ("is_full", "=", False),
         ],
     )
+    dept_code = fields.Char(
+        string="Department Code",
+        related='department_id.code',
+        store=True
+    )
 
     type = fields.Selection(
         [("internal", "Internal"), 

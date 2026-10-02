@@ -2,11 +2,6 @@
 <odoo>
     <!-- list view -->
 
-    <button name="action_filtered_students"
-        string="CE students only"
-        type="object" />
-
-
     <record id='student_student_view_list' model='ir.ui.view'>
         <field name='name'>student.student.list</field>
         <field name='model'>student.student</field>
@@ -92,6 +87,7 @@
                         <!-- column 2 -->
                         <group string='Academic Information'>
                             <field name='department_id' />
+                            <field name='dept_code' />
                             <field name='type' />
                         </group>
 

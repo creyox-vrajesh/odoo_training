@@ -8,21 +8,24 @@
             <form string="Department Configuration">
                 
                 <sheet>
-                    <field name='type'/>
-                    <field name='name'/>
-                    <field name='code'/>
-                    <field name='department_id'/>
+                    <group>
+
+                        <field name='type'/>
+                        <field name='name'/>
+                        <field name='code'/>
+                        <field name='department_id' 
+                        invisible="type != 'write'"
+                        required="type == 'write'"/>
+                    </group>
                 </sheet>
                 
-                <footer>
-                    
+                <footer>                    
                     <button name="action_process"
                         string="Process"
                         type="object"
                     />
 
-                    <button name="action_cancel"
-                        string="Cancel"
+                    <button string="Cancel"
                         type="object"
                         special="cancel"
                     />
@@ -32,10 +35,10 @@
         </field>
     </record>
 
-    <record id='department_conf_action' model='ir.action.act_window'>
+    <record id='department_conf_action' model='ir.actions.act_window'>
         <field name='name'>Deparmtent</field>
         <field name='res_model'>department.conf</field>
-        <field name='view mode'>form</field>
+        <field name='view_mode'>form</field>
         <field name='target'>new</field>
     </record>
 

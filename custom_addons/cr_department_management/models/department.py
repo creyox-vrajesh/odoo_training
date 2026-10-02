@@ -59,13 +59,13 @@ class Department(models.Model):
     @api.depends('external_students_ids')
     def _compute_no_of_external_students(self):
         for department in self:
-            print(department)
+            # print(department)
             department.no_of_external_students = len(department.external_students_ids)
 
     @api.depends("student_ids")
     def _compute_no_of_students(self):
         for department in self:
-            print(department)
+            # print(department)
             
             department.no_of_students = len(department.student_ids)
 
